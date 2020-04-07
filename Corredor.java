@@ -25,7 +25,7 @@ public class Corredor {
 
     public static void mostrarDatos(Corredor aaa[]) {
 
-        for (int d = 0; d < 3; d++) {
+        for (int d = 0; d < aaa.length; d++) {
             System.out.println(" * - * - * - * ");
             System.out.println("Corredor : " + aaa[d].dorsal + " >> " + aaa[d].nombre + " >> " + aaa[d].equipo);
         }
@@ -57,9 +57,9 @@ public class Corredor {
         Scanner entradaTeclado = new Scanner(System.in);
 
         System.out.println(" ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ");
-        System.out.println("1 : ");
-        System.out.println("3 : ");
-        System.out.println("5 : ");
+        System.out.println("1 : Mostrar Clasificación ");
+        System.out.println("3 : Anotar nueva llegada a meta");
+        System.out.println("5 : Mostrar info. corredor ");
         System.out.println("7 : Mostrar corredores participantes ");
         System.out.println("8 : ");
         System.out.println("9 : ");
@@ -73,33 +73,36 @@ public class Corredor {
     public void mostrarUno(int dorsal, Corredor aaa[]) {
 
         // muestra los datos de un corredor
-        int d=dorsal;
+        int d=dorsal;  
         boolean c=false;
         String nombre=" ",equipo=" ";
+      
         for(int i=0;i<aaa.length;i++){
           c=false;
             if(d==aaa[i].dorsal){
                 c=true;
                 nombre=aaa[i].nombre;
                 equipo=aaa[i].equipo;
-                break;
+   
+                break; 
             }
             
         }
         if (c==true){
-            System.out.println("Corredor : " + this.dorsal + " >> " + this.nombre + " >> " + this.equipo);       
+               
             System.out.println("Corredor : " + this.dorsal+ " nombree: " + nombre + "equipo: "+ equipo);
+   
         }
         else 
             System.out.println("No esta en la lista");
-        
-        
+       
+       
+    }
+    
         
 
-    }
+        
 
 } // fin de la class corredor
     
-    
-
     

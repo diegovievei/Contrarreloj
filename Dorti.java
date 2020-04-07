@@ -25,7 +25,7 @@ public class Dorti {
         /* le paso un dorsal, un tiempo, y lo pone en el array de clasificacion en la última celda libre */
         for (int i = 0; i < aaa.length; i++) {
 
-            aaa[i] = new Dorti(888, 100000);
+            aaa[i] = new Dorti(888, 99999);
 
         }
     }
@@ -53,6 +53,27 @@ public class Dorti {
         return (llegados);
 
     }
+    public static int mostrarTiempo(int dorsal,Dorti tiempos[]){
+        int tiempo=0;
+        int aux;
+           for( int i=0;i<tiempos.length;i++){
+               if(dorsal==tiempos[i].dorsal){
+                   tiempo=tiempos[i].tiempo;
+                    aux=i;
+               }
+           }
+        return tiempo;
+       
+    }
+    public static int posicion(int dorsal,Dorti tiempos[]){
+        int posicion=99;
+        for( int i=0;i<tiempos.length;i++){
+               if(dorsal==tiempos[i].dorsal){
+                    posicion=i+1;
+               }
+           }
+        return posicion;
+    }
 
     public static void mostrarClasificacion(Dorti aaa[], int llegados) {
 
@@ -66,6 +87,44 @@ public class Dorti {
     public static void anotarLlegada(Dorti aaa[], int dorsal, int llegados, int tiempo){
         
         
+    }
+    
+    public static int comprobarDorsal(int dorsal,Corredor acorredores[] ,Dorti tiempos[]){
+        int valido=-1;int i;
+        boolean inscrito=false;
+        boolean llegado=false;
+          for(Corredor aux:acorredores){ // Recorremos acorredores para comprobar si está inscrito   
+            if(aux.dorsal==dorsal)
+                inscrito=true;
+            
+          }
+            //Comprobamos si dorsal ya está en "tiempos"
+           for(Dorti aux:tiempos){
+              if(aux.dorsal==dorsal)
+                  llegado=true;
+             // i=aux;
+           }
+           
+        if ( inscrito && !llegado ) valido=0;  
+        if (!inscrito ) valido =1;
+        if ( inscrito && llegado ) valido = 2;
+       
+        return valido;
+  
+    }
+    public static String Diferencia (Dorti tiempos[],int tiempo){
+        int diferencia; 
+        String mensaje="";
+        diferencia=tiempo-tiempos[0].tiempo;
+        if (diferencia==0){
+            mensaje="Nuevo lider, a "+(tiempo-tiempos[1].tiempo )+ " secs. del 2ºclasificado";
+          
+        }
+        if (diferencia>0){ // Para q imprima solo diferencias con el primer clasificado
+            mensaje="A +"+ diferencia + "secs. del 1º clasificado";       
+        }
+ 
+        return mensaje;
     }
 
 }
