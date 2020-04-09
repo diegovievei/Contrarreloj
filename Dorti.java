@@ -80,16 +80,18 @@ public class Dorti {
     public static void mostrarClasificacion(Dorti aaa[],Corredor bbb[],int llegados) {
         String nombre=" ";
         String equipo=" ";
+        int auxp=0;
         for (int p = 0; p < llegados; p ++) {
             System.out.println(" * - * - * - * ");
             for(int i=0;i<bbb.length;i++){
              if(aaa[p].dorsal==bbb[i].dorsal) {
                  nombre=bbb[i].nombre;
                  equipo=bbb[i].equipo;
+                 auxp=p+1;
              }  
             }
             
-            System.out.println(p +" : " + aaa[p].dorsal + " "+ nombre+ " >> " + aaa[p].tiempo);
+            System.out.println(auxp +" : " + aaa[p].dorsal + " "+ nombre+ " >> " + aaa[p].tiempo);
         }
         System.out.println(" * - * - * - * ");
 
