@@ -99,6 +99,26 @@ public class Corredor {
        
     }
     
+    public static String buscaNombre(int dorsal, Corredor acorredores[]){
+               String nombre=" ";
+        for (int i=0; i<acorredores.length; i++)
+            if ( acorredores[i].dorsal == dorsal )
+                nombre= acorredores[i].nombre;
+        
+        return nombre;
+    
+    }
+    public static String buscaEquipo(int dorsal, Corredor acorredores[]){
+               String equipo=" ";
+        for (Corredor acorredore : acorredores) {
+            if (acorredore.dorsal == dorsal) {
+                equipo = acorredore.equipo;
+            }
+        }
+        
+        return equipo;
+    
+    }
         
 
         

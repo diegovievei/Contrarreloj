@@ -10,6 +10,8 @@ package contrarelojprofesor;
  * @author usuario
  */
 public class Dorti {
+
+  
     // atributos
     int dorsal;
     int tiempo;
@@ -50,7 +52,7 @@ public class Dorti {
                 }
         }
         }
-        return (llegados);
+        return llegados;
 
     }
     public static int mostrarTiempo(int dorsal,Dorti tiempos[]){
@@ -75,11 +77,19 @@ public class Dorti {
         return posicion;
     }
 
-    public static void mostrarClasificacion(Dorti aaa[], int llegados) {
-
+    public static void mostrarClasificacion(Dorti aaa[],Corredor bbb[],int llegados) {
+        String nombre=" ";
+        String equipo=" ";
         for (int p = 0; p < llegados; p ++) {
             System.out.println(" * - * - * - * ");
-            System.out.println(p +" : " + aaa[p].dorsal + " >> " + aaa[p].tiempo);
+            for(int i=0;i<bbb.length;i++){
+             if(aaa[p].dorsal==bbb[i].dorsal) {
+                 nombre=bbb[i].nombre;
+                 equipo=bbb[i].equipo;
+             }  
+            }
+            
+            System.out.println(p +" : " + aaa[p].dorsal + " "+ nombre+ " >> " + aaa[p].tiempo);
         }
         System.out.println(" * - * - * - * ");
 
@@ -116,12 +126,12 @@ public class Dorti {
         int diferencia; 
         String mensaje="";
         diferencia=tiempo-tiempos[0].tiempo;
-        if (diferencia==0){
-            mensaje="Nuevo lider, a "+(tiempo-tiempos[1].tiempo )+ " secs. del 2ºclasificado";
+        if (diferencia==0){//Igual a cero pq cuando se llama a este método, si el tiempo introducido es el mejor, ya va a estar en la posición 0 del array Tiempos
+            mensaje="Nuevo lider "/*+(tiempo-tiempos[1].tiempo )+ " secs. del 2ºclasificado"*/;
           
         }
         if (diferencia>0){ // Para q imprima solo diferencias con el primer clasificado
-            mensaje="A +"+ diferencia + "secs. del 1º clasificado";       
+            mensaje="A +"+ diferencia + "secs. del 1º clasificado," ;       
         }
  
         return mensaje;

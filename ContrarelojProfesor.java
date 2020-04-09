@@ -21,7 +21,6 @@ public class ContrarelojProfesor {
         //variables globales
         int opcion, dorsal;
         int llegados =0;  // corredores llegados
-        int mejortiempo;
         int comprueba;
         Corredor acorredores[];
         acorredores = new Corredor[6];   // el array de los corredores inscritos
@@ -39,7 +38,7 @@ public class ContrarelojProfesor {
                 case 0:  // meter más datos de corredores, opcion oculta
                     break;
                 case 1:  // mostrar la clasificación
-                    Dorti.mostrarClasificacion(tiempos, llegados);
+                    Dorti.mostrarClasificacion(tiempos,acorredores,llegados);
                     break;
                 case 2: // libre
                     break;
@@ -48,19 +47,24 @@ public class ContrarelojProfesor {
                     System.out.println("Digite el dorsal");
                     dorsal=teclado.nextInt();
                     comprueba=Dorti.comprobarDorsal(dorsal, acorredores, tiempos);
+                    String nombre= Corredor.buscaNombre(dorsal, acorredores);
+                    String equipo= Corredor.buscaEquipo(dorsal, acorredores);
                     if(comprueba==0){
                     System.out.println("Digite el tiempo");
                     int tiempo=teclado.nextInt();
                     Dorti.clasificar(dorsal, tiempo, tiempos, llegados);
                     llegados++;
-                    //Comprobamos diferencia de tiempo  
-                    //System.out.println(tiempo-tiempos[0].tiempo);
-                   String diferencia= Dorti.Diferencia(tiempos, tiempo);
-                   //Mostrará un mensaje con la diferencia de tiempos 
-                   System.out.println(diferencia);
+                    String diferencia= Dorti.Diferencia(tiempos, tiempo);//Mostrará un mensaje con la diferencia de tiempos    
+                     int posicion=Dorti.posicion(dorsal, tiempos); 
+                    
+                    System.out.print("El corredor "+nombre + " del equipo "
+                        + equipo + " hizo un tiempo de "+tiempo+ " "+diferencia);
+                    if(posicion!=1){
+                        System.out.println("clasificandose en "+posicion+"º");
+                    }
                     }
                     if(comprueba==2){
-                        System.out.println("El corredor ya ha llegado");                        
+                        System.out.println("El corredor numero" + dorsal + " "+ nombre+" ya ha llegado");                        
                     }
                     if(comprueba==1){
                         System.out.println("No está en la lista");
